@@ -1,0 +1,220 @@
+/* Font import and global reset */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* body */
+body {
+  min-height: 100vh;
+  background: #000;
+  overflow-y: auto;
+}
+
+/* ================= BACKGROUND GRID ================= */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+  align-content: center;
+  z-index: 0;
+  overflow: hidden;
+}
+.bg-grid::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000, #00ff26, #000);
+  animation: bgFlow 5s linear infinite;
+  z-index: 1;
+  opacity: 0.4;
+}
+@keyframes bgFlow {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.bg-grid span {
+  position: relative;
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  background: #181818;
+  z-index: 2;
+  transition: 1s;
+}
+.bg-grid span:hover {
+  background: #00ff26;
+  transition: 0s;
+}
+
+/* ================= PROFIL ================= */
+section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 0;
+}
+
+/* Kotak profil */
+.signin {
+  width: 400px;
+  background: #222;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Judul */
+.signin .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* pastikan semua isi center */
+  justify-content: center;
+  gap: 25px;
+  text-align: center;
+}
+
+/* Warna hijau untuk judul profil */
+.signin .content h2 {
+  font-size: 2em;
+  color: #00ff26 !important; /* pakai !important supaya tidak ketimpa */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+
+
+/* Foto Profil */
+.profile-pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #00ff26;
+  background: #00ff26;
+}
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* Data diri */
+.profile-info {
+  width: 100%;
+  background: #333;
+  padding: 15px;
+  border-radius: 6px;
+  color: #fff;
+  box-shadow: inset 0 0 10px #000;
+}
+
+.profile-info p {
+  margin-bottom: 8px;
+  font-size: 1em;
+  text-align: left; /* Rata kanan kiri */
+  line-height: 1.5;
+}
+
+.profile-info strong {
+  color: #00ff26;
+}
+
+
+/* Keahlian */
+.skills { width: 100%; }
+.skills h3 {
+  color: #00ff26;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.skill { margin-bottom: 10px; }
+.skill p {
+  color: #fff;
+  margin-bottom: 5px;
+}
+.progress {
+  background: #333;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 8px;
+}
+.bar {
+  height: 8px;
+  background: linear-gradient(90deg, #00ff26, #00b32d);
+  width: 0;
+  animation: grow 2s ease forwards;
+}
+@keyframes grow { from { width: 0; } }
+
+/* Marquee */
+.marquee {
+  color: #00ff26;
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* Kontak */
+.contact {
+  width: 100%;
+  margin-top: 25px;
+  text-align: left;
+}
+.contact h3 {
+  color: #00ff26;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.contact-item a {
+  color: #fff;
+  text-decoration: none;
+}
+.contact-item a:hover {
+  color: #00ff26;
+  text-decoration: underline;
+}
+
+/* Responsif */
+@media (max-width:900px){
+  .bg-grid span {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
+  .signin { width: 90%; }
+}
+@media (max-width:600px){
+  .bg-grid span {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
+  .signin { width: 95%; padding: 25px; }
+}
